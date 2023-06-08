@@ -1,0 +1,132 @@
+.col-md-3 {
+    width: 25%;
+}
+.box-product-hot {
+    width: 100%;
+    height: auto;
+    margin-top: 10px;
+    float: left;
+}
+.box-product-hot .header {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    padding: 0px 10px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    background: #f16d25;
+    border: 0px;
+    float: left;
+}
+.box-product-hot a {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    padding: 0px 10px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    background: #337ab7;
+    border: 0px;
+    float: left;
+}
+ul.body-pro {
+    background: #fff;
+    float: left;
+    height: auto;
+    padding: 10px;
+    width: 100%;
+    border: 3px solid #f16d25;
+}
+li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    text-align: -webkit-match-parent;
+}
+ul {
+    margin: 0;
+}
+.box-product-hot ul.body-pro li {
+    width: 100%;
+    height: auto;
+    float: left;
+}
+ul.body-pro li {
+    border-bottom: 1px dashed #efefef;
+    float: left;
+    height: auto;
+    padding-bottom: 10px;
+    padding-top: 7px;
+    width: 100%;
+}
+a {
+    background-color: transparent;
+}
+img {
+    vertical-align: middle;
+}
+ul.body-pro li.item-list a.link-view {
+    color: #000;
+    display: list-item;
+    float: initial;
+    font-weight: 700;
+    margin-top: 8px;
+    font-size: 12px;
+    font-size: 12px;
+}
+.box-product-hot ul.body-pro li a.img-view img {
+    border: thin solid rgba(204, 204, 204, 0.29);
+    width: 80px;
+    margin-right: 8px;
+}
+.col-lg-9.all-product {
+    padding-top: 0px;
+}
+h4.card-title{
+    list-style-type: none;
+    font-size: 16px;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+    display: block;
+    color: #000;
+}
+.row.card-image-margin {
+    padding-bottom: 20px;
+}
+li.page-item.previous-center {
+    text-align: center;
+}
+li.page-item.previous {
+    padding-left: 92px;
+}
+.phan-trang {
+    padding-bottom: 20px;
+}
+a.link-view {
+    text-decoration: none;
+}
+img.card-img-top {
+    width: 296px;
+    height: 296px;
+}
+.card.box-produc {
+    height: 450px;
+    width: 298px;
+}
+section.container {
+    padding-bottom: 20px;
+}
+.col-md-4 {
+    padding-bottom: 25px;
+}
+.all {
+    background-color: beige;
+}

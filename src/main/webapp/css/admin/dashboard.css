@@ -1,0 +1,18 @@
+.col-lg-3.menu-body {
+    background-color: #f16d25;
+    background-image: linear-gradient(180deg,#f16d25 10%,#f16d25 100%);
+    background-size: cover;
+    width: 15%;
+    min-height: 100vh;
+}
+a.nav-link.active {
+    font-weight: bold;
+}
+a.nav-link.active:hover {
+    color: greenyellow;
+}
+.row.row-one {
+    height: 55px;
+    border: 2px none #f16d25;
+    background-color: #f16d25;
+}

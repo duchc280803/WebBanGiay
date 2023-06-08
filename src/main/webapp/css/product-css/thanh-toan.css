@@ -1,0 +1,29 @@
+.checkout-section {
+    background: rgba(255, 255, 255, 1);
+    padding: 15px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(221, 221, 221, 1);
+    box-shadow: none;
+    margin-bottom: 25px;
+}
+.title {
+    font-family: 'Noto Sans';
+    font-weight: 400;
+    font-size: 16px;
+    color: rgba(51,51,51,1);
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: initial;
+    text-align: left;
+}
+.section-shipping {
+    width: 40%;
+    display: block;
+    padding-left: 90px;
+}
+img.img-thumbnail {
+    width: 70px;
+}

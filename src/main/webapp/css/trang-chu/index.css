@@ -1,0 +1,33 @@
+.card{
+    width: 400px;
+    height: 430px;
+}
+.banner img {
+    max-width: 80%;
+    height: auto;
+}
+.bg-light{
+    padding-bottom: 20px;
+}
+.featured-product{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.fill-product{
+    padding-bottom: 25px;
+    background-color: cornsilk !important;
+}
+.find-product{
+    padding-right: 15px;
+    padding-top: 15px;
+}
+a {
+    text-decoration: none;
+}
+.col-md-4 {
+    padding-bottom: 40px;
+}
+.card-body {
+    width: 400px;
+    height: 150px;
+}

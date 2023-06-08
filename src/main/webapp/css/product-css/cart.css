@@ -1,0 +1,124 @@
+section.cart-body {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.mXmGu\+ {
+    display: flex;
+    padding-top: 25px;
+}
+
+.mJX7hG {
+    outline: none;
+    cursor: pointer;
+    border: 0;
+    font-size: .875rem;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color .1s cubic-bezier(.4, 0, .6, 1);
+    border: 1px solid rgba(0, 0, 0, .09);
+    border-radius: 2px;
+    background: transparent;
+    color: rgba(0, 0, 0, .8);
+    width: 32px;
+    height: 32px;
+}
+
+.mJX7hG .shopee-svg-icon {
+    font-size: 10px;
+    width: 10px;
+    height: 10px;
+    flex-shrink: 0;
+}
+
+._8BP9GU {
+    width: 50px;
+    height: 32px;
+    border-left: 0;
+    border-right: 0;
+    font-size: 16px;
+    font-weight: 400;
+    box-sizing: border-box;
+    text-align: center;
+    cursor: text;
+    border-radius: 0;
+    -webkit-appearance: none;
+}
+
+.vWt6ZL {
+    color: rgba(0, 0, 0, .54);
+    text-decoration: line-through;
+}
+
+h5, .h5 {
+    font-size: 15px;
+}
+
+.\--3Iu\+ {
+    height: 21rem;
+}
+
+.\--3Iu\+ .\+2nxRQ {
+    width: 6.75rem;
+    height: 6.125rem;
+}
+
+.\+2nxRQ {
+    background-position: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 12.5rem;
+    height: 11.1875rem;
+}
+
+.\--3Iu\+ .zH4psk {
+    color: rgba(0, 0, 0, .4);
+    font-size: .875rem;
+    line-height: 1rem;
+    margin-top: 1.125rem;
+}
+
+.OpSzHa {
+    text-decoration: none;
+    color: rgba(0, 0, 0, .87);
+    display: block;
+}
+
+.OpSzHa > .shopee-button-solid {
+    padding: 0.625rem 2.625rem;
+}
+
+.shopee-button-solid--primary {
+    position: relative;
+    overflow: visible;
+    outline: 0;
+    background: #ee4d2d;
+}
+
+.shopee-button-solid {
+    outline: none;
+    cursor: pointer;
+    border: 0;
+    font-size: .875rem;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color .1s cubic-bezier(.4, 0, .6, 1);
+    position: relative;
+    background: rgba(0, 0, 0, .54);
+    color: #fff;
+    transition: opacity .2s ease;
+    border-radius: 2px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .09);
+}
