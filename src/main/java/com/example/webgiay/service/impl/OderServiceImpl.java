@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -180,5 +181,40 @@ public class OderServiceImpl implements OderService {
         Oder findById = oderRepository.findById(id).orElse(null);
         findById.setStatus(oder.getStatus());
         return oderRepository.save(findById);
+    }
+
+    @Override
+    public Integer countOderMonth() {
+        LocalDate localDate = LocalDate.now();
+        int month = localDate.getMonthValue();
+        return oderRepository.countOderMonth(month);
+    }
+
+    @Override
+    public BigDecimal totalMoney() {
+        LocalDate localDate = LocalDate.now();
+        int month = localDate.getMonthValue();
+        return oderRepository.totalMoney(month);
+    }
+
+    @Override
+    public Integer countOderDay() {
+        LocalDate localDate = LocalDate.now();
+        int dayOfMonth = localDate.getDayOfMonth();
+        return oderRepository.countOderDay(dayOfMonth);
+    }
+
+    @Override
+    public BigDecimal totalMoneyDay() {
+        LocalDate localDate = LocalDate.now();
+        int dayOfMonth = localDate.getDayOfMonth();
+        return oderRepository.totalMoneyDay(dayOfMonth);
+    }
+
+    @Override
+    public Integer countProductMonth() {
+        LocalDate localDate = LocalDate.now();
+        int month = localDate.getMonthValue();
+        return oderRepository.countProducMonth(month);
     }
 }

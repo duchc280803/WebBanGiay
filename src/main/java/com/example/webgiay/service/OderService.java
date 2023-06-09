@@ -5,6 +5,7 @@ import com.example.webgiay.entity.Oder;
 import com.example.webgiay.entity.User;
 import org.springframework.data.repository.query.Param;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface OderService {
@@ -28,4 +29,14 @@ public interface OderService {
     List<CustomerProductDTO> productOfCustomer(@Param("id") Integer id);
 
     Oder updateStatus(Oder oder,Integer id);
+
+    Integer countOderMonth();
+
+    BigDecimal totalMoney();
+
+    Integer countOderDay();
+
+    BigDecimal totalMoneyDay();
+
+    Integer countProductMonth();
 }

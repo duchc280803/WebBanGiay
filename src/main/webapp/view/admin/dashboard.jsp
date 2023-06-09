@@ -6,6 +6,10 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="total" value="0"/>
+<fmt:setLocale value="${locale}"/>
+<fmt:setBundle basename="org.apache.struts.util.LocalStrings"/>
 <html>
 <head>
     <title>Title</title>
@@ -106,7 +110,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Doanh Số Tháng Này</h4>
-                                <h6 class="card-title" style="color: #E6970B">16 Đơn Hàng/100,100,100 đ</h6>
+                                <h6 class="card-title" style="color: #E6970B">Tổng Đơn Hàng: ${countOderMonth} / Doanh Thu: <fmt:formatNumber value="${totalMoney}" pattern="###,###"/> đ</h6>
                             </div>
                         </div>
                     </div>
@@ -114,7 +118,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Hôm Nay</h4>
-                                <h6 class="card-title" style="color: #E6970B">16 Đơn Hàng/100,100,100 đ</h6>
+                                <h6 class="card-title" style="color: #E6970B">Tổng Đơn Hàng: ${countOderDay} / Doanh Thu: <fmt:formatNumber value="${totalMoneyDay}" pattern="###,###"/> đ</h6>
                             </div>
                         </div>
                     </div>
@@ -122,7 +126,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Hàng Bán Được Tháng Này</h4>
-                                <h6 class="card-title" style="color: #E6970B">16 Đơn Hàng/100,100,100 đ</h6>
+                                <h6 class="card-title" style="color: #E6970B">${countProductMonth} Sản Phẩm</h6>
                             </div>
                         </div>
                     </div>
