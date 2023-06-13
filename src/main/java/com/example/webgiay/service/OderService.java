@@ -65,4 +65,6 @@ public interface OderService {
 
     QLDonHangDTO findByPhone(Integer phone);
 
+    Integer countByStatus();
+
 }

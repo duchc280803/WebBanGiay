@@ -294,4 +294,9 @@ public class OderServiceImpl implements OderService {
         QLDonHangDTO donHangDTO = new QLDonHangDTO(id, hoVaTen, sdt, totalMoney, status);
         return donHangDTO;
     }
+
+    @Override
+    public Integer countByStatus() {
+        return oderRepository.countByStatus();
+    }
 }

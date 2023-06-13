@@ -31,7 +31,9 @@ public class OderController {
     @GetMapping("hien-thi")
     public String hienThi(Model model) {
         List<QLDonHangDTO> donHangDTOList = oderService.quanLyDonHang();
+        Integer countByStatus = oderService.countByStatus();
         model.addAttribute("donHangDTOList", donHangDTOList);
+        model.addAttribute("countByStatus", countByStatus);
         return "admin/oder";
     }
 
@@ -68,7 +70,7 @@ public class OderController {
             e.printStackTrace();
             session.setAttribute("error", "Đặt Hàng Thất Bại");
         }
-        return "customer/view-thanh-toan";
+        return "redirect:/product/hien-thi";
     }
 
     @PostMapping("update/{id}")

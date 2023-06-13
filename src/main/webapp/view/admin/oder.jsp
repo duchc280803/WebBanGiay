@@ -141,7 +141,7 @@
                     </div>
                     <div class="col-3">
                         <h6>
-                            Đơn chưa giao:
+                            Đơn chưa giao: ${countByStatus}
                         </h6>
                     </div>
                 </div>

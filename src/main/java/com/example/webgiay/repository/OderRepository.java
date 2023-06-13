@@ -152,4 +152,7 @@ public interface OderRepository extends JpaRepository<Oder,Integer> {
             "JOIN pd.product p WHERE o.phone = : phone")
     List<Object[]> findByPhone(@Param("phone") Integer phone);
 
+    @Query("SELECT COUNT(o.id) FROM Oder o WHERE o.status = 1")
+    Integer countByStatus();
+
 }
