@@ -108,19 +108,6 @@
                             Products
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                 stroke-linejoin="round" class="feather feather-users" aria-hidden="true">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="9" cy="7" r="4"></circle>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                            </svg>
-                            Customers
-                        </a>
-                    </li>
                 </ul>
             </div>
         </nav>
@@ -143,13 +130,17 @@
                                                     </p>
                                                 </li>
                                                 <li class="list-inline-item items-list">
-                                                    <c:if test="${customerOderDTO.status == 2}">
+                                                    <c:if test="${customerOderDTO.status == 2 ||
+                                                                  customerOderDTO.status == 3 ||
+                                                                  customerOderDTO.status == 4}">
                                                         <p class="py-1 px-2 rounded "
                                                            style="background-color: #16FF00;color: black">
                                                             Vận Chuyển
                                                         </p>
                                                     </c:if>
-                                                    <c:if test="${customerOderDTO.status != 2}">
+                                                    <c:if test="${customerOderDTO.status != 2 &&
+                                                                  customerOderDTO.status != 3 &&
+                                                                  customerOderDTO.status != 4}">
                                                         <p class="py-1 px-2 rounded "
                                                            style="background-color: #00C4FF;color: black">
                                                             Vận Chuyển
@@ -157,13 +148,13 @@
                                                     </c:if>
                                                 </li>
                                                 <li class="list-inline-item items-list">
-                                                    <c:if test="${customerOderDTO.status == 3}">
+                                                    <c:if test="${customerOderDTO.status == 3 || customerOderDTO.status == 4}">
                                                         <p class="py-1 px-2 rounded "
                                                            style="background-color: #16FF00;color: black">
                                                             Đang Giao
                                                         </p>
                                                     </c:if>
-                                                    <c:if test="${customerOderDTO.status != 3}">
+                                                    <c:if test="${customerOderDTO.status != 3 && customerOderDTO.status != 4}">
                                                         <p class="py-1 px-2 rounded "
                                                            style="background-color: #00C4FF;color: black">
                                                             Đang Giao
@@ -184,7 +175,7 @@
                                                         </p>
                                                     </c:if>
                                                 </li>
-                                                <c:if test="${customerOderDTO.status == 4}">
+                                                <c:if test="${customerOderDTO.status == 5}">
                                                     <li class="list-inline-item items-list">
                                                         <p class="py-1 px-2 rounded "
                                                            style="background-color: #DF2E38;color: black">
@@ -192,7 +183,7 @@
                                                         </p>
                                                     </li>
                                                 </c:if>
-                                                <c:if test="${customerOderDTO.status != 4}">
+                                                <c:if test="${customerOderDTO.status != 5}">
                                                     <li class="list-inline-item items-list">
                                                         <p class="py-1 px-2 rounded "
                                                            style="background-color: #00C4FF;color: black">
@@ -224,13 +215,12 @@
                                     <div class="hidden">
                                         <form action="/oder/update/${customerOderDTO.id}" method="post"
                                               modelAttributte="oder">
-                                            <input type="hidden" value="4" name="status">
+                                            <input type="hidden" value="5" name="status">
                                             <button type="submit" class="btn btn-danger">Hủy Đơn</button>
                                         </form>
-                                        <button class="btn btn-danger"></button>
                                         <form action="/oder/update/${customerOderDTO.id}" method="post"
                                               modelAttributte="oder">
-                                            <input type="hidden" value="3" name="status">
+                                            <input type="hidden" value="4" name="status">
                                             <button type="submit" class="btn btn-success">Hoàn Thành</button>
                                         </form>
                                     </div>
@@ -239,12 +229,12 @@
                                     <div class="hidden">
                                         <form action="/oder/update/${customerOderDTO.id}" method="post"
                                               modelAttributte="oder">
-                                            <input type="hidden" value="2" name="status">
+                                            <input type="hidden" value="3" name="status">
                                             <button type="submit" class="btn btn-success">Giao Hàng</button>
                                         </form>
                                         <form action="/oder/update/${customerOderDTO.id}" method="post"
                                               modelAttributte="oder">
-                                            <input type="hidden" value="4" name="status">
+                                            <input type="hidden" value="5" name="status">
                                             <button type="submit" class="btn btn-danger">Hủy Đơn</button>
                                         </form>
                                     </div>

@@ -39,4 +39,30 @@ public interface OderService {
     BigDecimal totalMoneyDay();
 
     Integer countProductMonth();
+    BigDecimal selectMonthJanuary();
+
+    BigDecimal selectMonthFebruary();
+
+    BigDecimal selectMonthMarch();
+
+    BigDecimal selectMonthApril();
+
+    BigDecimal selectMonthMay();
+
+    BigDecimal selectMonthJune();
+
+    BigDecimal selectMonthJuly();
+
+    BigDecimal selectMonthAugust();
+
+    BigDecimal selectMonthSeptember();
+
+    BigDecimal selectMonthOctober();
+
+    BigDecimal selectMonthNovember();
+
+    BigDecimal selectMonthDecember();
+
+    QLDonHangDTO findByPhone(Integer phone);
+
 }

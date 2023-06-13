@@ -34,7 +34,7 @@
         <c:if test="${sessionScope.loggedInUser != null}">
             <c:if test="${sessionScope.loggedInUser.name != 'admin'}">
                 <li class="nav-item">
-                    <a class="nav-link header" href="/customer/all-oder">Khách Hàng</a>
+                    <a class="nav-link header" href="/customer/cho-thanh-toan">Khách Hàng</a>
                 </li>
             </c:if>
             <li class="nav-item">

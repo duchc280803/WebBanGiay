@@ -53,4 +53,15 @@ public interface ProductDetailRepository extends JpaRepository<ProductDetail,Int
             "WHERE p.name like %:name% GROUP BY p.id,p.name,cl.name,s.size,c.name,o.name,pd.quantity,pd.price,p.description")
     List<Object[]> findByProduct(@Param("name") String name);
 
+    @Query("SELECT p.id, p.name, cl.name, s.size, c.name, o.name, pd.quantity, pd.price, p.description, MIN(i.image) FROM Product p " +
+            " JOIN p.listImage i " +
+            " JOIN p.listProduct pd " +
+            " JOIN pd.category c " +
+            " JOIN pd.size s " +
+            " JOIN pd.origin o " +
+            " JOIN pd.color cl " +
+            " WHERE c.id = :id " +
+            " GROUP BY p.id, p.name, cl.name, s.size, c.name, o.name, pd.quantity, pd.price, p.description")
+    Page<Object[]> selectAllProductCategory(@Param("id") Integer id,Pageable pageable);
+
 }

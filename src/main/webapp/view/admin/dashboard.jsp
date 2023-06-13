@@ -86,19 +86,6 @@
                             Products
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                 stroke-linejoin="round" class="feather feather-users" aria-hidden="true">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                                <circle cx="9" cy="7" r="4"></circle>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                            </svg>
-                            Customers
-                        </a>
-                    </li>
                 </ul>
             </div>
         </nav>
@@ -110,7 +97,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Doanh Số Tháng Này</h4>
-                                <h6 class="card-title" style="color: #E6970B">Tổng Đơn Hàng: ${countOderMonth} / Doanh Thu: <fmt:formatNumber value="${totalMoney}" pattern="###,###"/> đ</h6>
+                                <h6 class="card-title" style="color: #E6970B">Tổng Đơn Hàng: ${countOderMonth} / Doanh
+                                    Thu: <fmt:formatNumber value="${totalMoney}" pattern="###,###"/> đ</h6>
                             </div>
                         </div>
                     </div>
@@ -118,7 +106,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Hôm Nay</h4>
-                                <h6 class="card-title" style="color: #E6970B">Tổng Đơn Hàng: ${countOderDay} / Doanh Thu: <fmt:formatNumber value="${totalMoneyDay}" pattern="###,###"/> đ</h6>
+                                <h6 class="card-title" style="color: #E6970B">Tổng Đơn Hàng: ${countOderDay} / Doanh
+                                    Thu: <fmt:formatNumber value="${totalMoneyDay}" pattern="###,###"/> đ</h6>
                             </div>
                         </div>
                     </div>
@@ -131,6 +120,7 @@
                         </div>
                     </div>
                 </div>
+                <br>
             </div>
             <br>
             <div class="container">
@@ -138,6 +128,17 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-body">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <input id="startDateInput" class="form-control" type="date"/>
+                                    </div>
+                                    <div class="col-4">
+                                        <input id="endDateInput" class="form-control" type="date"/>
+                                    </div>
+                                    <div class="col-4">
+                                    </div>
+                                </div>
+                                <br>
                                 <canvas id="barChart"></canvas>
                             </div>
                         </div>
@@ -156,13 +157,26 @@
 
     // Define the data for the charts
     var barChartData = {
-        labels: ['Label 1', 'Label 2', 'Label 3', 'Label 4'],
+        labels: ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'],
         datasets: [{
             label: 'Bar Chart',
             backgroundColor: 'rgba(75, 192, 192, 0.2)',
             borderColor: 'rgba(75, 192, 192, 1)',
             borderWidth: 1,
-            data: [10, 20, 15, 25]
+            data: [
+                ${selectMonthJanuary},
+                ${selectMonthFebruary},
+                ${selectMonthMarch},
+                ${selectMonthApril},
+                ${selectMonthMay},
+                ${selectMonthJune},
+                ${selectMonthJuly},
+                ${selectMonthAugust},
+                ${selectMonthSeptember},
+                ${selectMonthOctober},
+                ${selectMonthNovember},
+                ${selectMonthDecember}
+            ]
         }]
     };
 
@@ -171,6 +185,69 @@
         type: 'bar',
         data: barChartData
     });
+
+    var startDateInput = document.getElementById('startDateInput');
+    var endDateInput = document.getElementById('endDateInput');
+
+    startDateInput.addEventListener('change', updateBarChart);
+    endDateInput.addEventListener('change', updateBarChart);
+
+    // Function to update the bar chart based on the selected dates
+    function updateBarChart() {
+        var startDate = new Date(startDateInput.value);
+        var endDate = new Date(endDateInput.value);
+
+        // Calculate the number of months between the start and end dates
+        var numMonths = (endDate.getFullYear() - startDate.getFullYear()) * 12 + (endDate.getMonth() - startDate.getMonth()) + 1;
+
+        // Generate an array of data for the selected months
+        var newData = [];
+        for (var i = 0; i < numMonths; i++) {
+            if (startDate.getMonth() + i === 5) { // Check if the current month is June (index 5)
+                newData.push(getDataForMonth(startDate.getMonth() + i));
+            } else {
+                newData.push(0); // If it's not June, set the data to 0
+            }
+        }
+
+        // Update the data and labels of the bar chart
+        barChart.data.labels = generateMonthLabels(startDate, numMonths);
+        barChart.data.datasets[0].data = newData;
+
+        // Update the bar chart
+        barChart.update();
+    }
+
+    // Function to generate the month labels for the bar chart
+    function generateMonthLabels(startDate, numMonths) {
+        var labels = [];
+        var currentMonth = startDate.getMonth();
+        var currentYear = startDate.getFullYear();
+
+        for (var i = 0; i < numMonths; i++) {
+            labels.push(getMonthLabel(currentMonth, currentYear));
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+        }
+
+        return labels;
+    }
+
+    // Function to get the data for a specific month
+    function getDataForMonth(month) {
+        // Replace this with your logic to retrieve data for the specified month (June)
+        // In this case, you can return the actual data you have for June
+        return 100; // Example data for June
+    }
+
+    // Function to get the label for a specific month
+    function getMonthLabel(month, year) {
+        var monthNames = ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6', 'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'];
+        return monthNames[month] + ' ' + year;
+    }
 </script>
 <script src="/js/bootstrap.js"></script>
 </html>

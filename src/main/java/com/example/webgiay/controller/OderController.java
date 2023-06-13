@@ -79,12 +79,19 @@ public class OderController {
             if (result.hasErrors()) {
                 return "admin/oder-detail";
             }
-            oderService.updateStatus(oder,id);
+            oderService.updateStatus(oder, id);
             session.setAttribute("message", "Thành Công");
         } catch (Exception e) {
             e.printStackTrace();
             session.setAttribute("error", "Thất Bại");
         }
         return "redirect:/oder/hien-thi";
+    }
+
+    @GetMapping("hien-thi/search")
+    public String findByOder(@RequestParam("phone") Integer phone, Model model) {
+        QLDonHangDTO qlDonHangDTO = oderService.findByPhone(phone);
+        model.addAttribute("qlDonHangDTO", qlDonHangDTO);
+        return "admin/oder";
     }
 }

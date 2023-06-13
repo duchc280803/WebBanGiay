@@ -15,7 +15,6 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -67,9 +66,10 @@ public class OderServiceImpl implements OderService {
         List<DonHangDTO> donHangDTOList = new ArrayList<>();
         for (Object[] list : objectList
         ) {
-            String name = (String) list[0];
-            Integer status = (Integer) list[1];
-            DonHangDTO donHangDTO = new DonHangDTO(name, status);
+            String image = (String) list[0];
+            String name = (String) list[1];
+            Integer status = (Integer) list[2];
+            DonHangDTO donHangDTO = new DonHangDTO(image, name, status);
             donHangDTOList.add(donHangDTO);
         }
         return donHangDTOList;
@@ -81,9 +81,10 @@ public class OderServiceImpl implements OderService {
         List<DonHangDTO> donHangDTOList = new ArrayList<>();
         for (Object[] list : objectList
         ) {
-            String name = (String) list[0];
-            Integer status = (Integer) list[1];
-            DonHangDTO donHangDTO = new DonHangDTO(name, status);
+            String image = (String) list[0];
+            String name = (String) list[1];
+            Integer status = (Integer) list[2];
+            DonHangDTO donHangDTO = new DonHangDTO(image, name, status);
             donHangDTOList.add(donHangDTO);
         }
         return donHangDTOList;
@@ -95,9 +96,10 @@ public class OderServiceImpl implements OderService {
         List<DonHangDTO> donHangDTOList = new ArrayList<>();
         for (Object[] list : objectList
         ) {
-            String name = (String) list[0];
-            Integer status = (Integer) list[1];
-            DonHangDTO donHangDTO = new DonHangDTO(name, status);
+            String image = (String) list[0];
+            String name = (String) list[1];
+            Integer status = (Integer) list[2];
+            DonHangDTO donHangDTO = new DonHangDTO(image, name, status);
             donHangDTOList.add(donHangDTO);
         }
         return donHangDTOList;
@@ -109,9 +111,10 @@ public class OderServiceImpl implements OderService {
         List<DonHangDTO> donHangDTOList = new ArrayList<>();
         for (Object[] list : objectList
         ) {
-            String name = (String) list[0];
-            Integer status = (Integer) list[1];
-            DonHangDTO donHangDTO = new DonHangDTO(name, status);
+            String image = (String) list[0];
+            String name = (String) list[1];
+            Integer status = (Integer) list[2];
+            DonHangDTO donHangDTO = new DonHangDTO(image, name, status);
             donHangDTOList.add(donHangDTO);
         }
         return donHangDTOList;
@@ -123,9 +126,10 @@ public class OderServiceImpl implements OderService {
         List<DonHangDTO> donHangDTOList = new ArrayList<>();
         for (Object[] list : objectList
         ) {
-            String name = (String) list[0];
-            Integer status = (Integer) list[1];
-            DonHangDTO donHangDTO = new DonHangDTO(name, status);
+            String image = (String) list[0];
+            String name = (String) list[1];
+            Integer status = (Integer) list[2];
+            DonHangDTO donHangDTO = new DonHangDTO(image, name, status);
             donHangDTOList.add(donHangDTO);
         }
         return donHangDTOList;
@@ -141,7 +145,7 @@ public class OderServiceImpl implements OderService {
             Integer phone = (Integer) list[2];
             BigDecimal totalMoney = (BigDecimal) list[3];
             Integer status = (Integer) list[4];
-            QLDonHangDTO donHangDTO = new QLDonHangDTO(id,hoVaTen, phone, totalMoney, status);
+            QLDonHangDTO donHangDTO = new QLDonHangDTO(id, hoVaTen, phone, totalMoney, status);
             donHangDTOList.add(donHangDTO);
         }
         return donHangDTOList;
@@ -156,7 +160,7 @@ public class OderServiceImpl implements OderService {
         Integer phone = (Integer) objects[2];
         String address = (String) objects[3];
         Integer status = (Integer) objects[4];
-        CustomerOderDTO customerOderDTO = new CustomerOderDTO(idOder,name,phone,address,status);
+        CustomerOderDTO customerOderDTO = new CustomerOderDTO(idOder, name, phone, address, status);
         return customerOderDTO;
     }
 
@@ -170,14 +174,14 @@ public class OderServiceImpl implements OderService {
             Integer size = (Integer) list[2];
             Integer quantity = (Integer) list[3];
             BigDecimal totalMoney = (BigDecimal) list[4];
-            CustomerProductDTO customerProductDTO = new CustomerProductDTO(image,name, size, quantity, totalMoney);
+            CustomerProductDTO customerProductDTO = new CustomerProductDTO(image, name, size, quantity, totalMoney);
             customerProductDTOS.add(customerProductDTO);
         }
         return customerProductDTOS;
     }
 
     @Override
-    public Oder updateStatus(Oder oder,Integer id) {
+    public Oder updateStatus(Oder oder, Integer id) {
         Oder findById = oderRepository.findById(id).orElse(null);
         findById.setStatus(oder.getStatus());
         return oderRepository.save(findById);
@@ -199,16 +203,16 @@ public class OderServiceImpl implements OderService {
 
     @Override
     public Integer countOderDay() {
-        LocalDate localDate = LocalDate.now();
-        int dayOfMonth = localDate.getDayOfMonth();
-        return oderRepository.countOderDay(dayOfMonth);
+        Calendar calendar = Calendar.getInstance();
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        return oderRepository.countOderDay(day);
     }
 
     @Override
     public BigDecimal totalMoneyDay() {
-        LocalDate localDate = LocalDate.now();
-        int dayOfMonth = localDate.getDayOfMonth();
-        return oderRepository.totalMoneyDay(dayOfMonth);
+        Calendar calendar = Calendar.getInstance();
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        return oderRepository.totalMoneyDay(day);
     }
 
     @Override
@@ -216,5 +220,78 @@ public class OderServiceImpl implements OderService {
         LocalDate localDate = LocalDate.now();
         int month = localDate.getMonthValue();
         return oderRepository.countProducMonth(month);
+    }
+
+    @Override
+    public BigDecimal selectMonthJanuary() {
+        return oderRepository.selectMonthJanuary();
+    }
+
+    @Override
+    public BigDecimal selectMonthFebruary() {
+        return oderRepository.selectMonthFebruary();
+    }
+
+    @Override
+    public BigDecimal selectMonthMarch() {
+        return oderRepository.selectMonthMarch();
+    }
+
+    @Override
+    public BigDecimal selectMonthApril() {
+        return oderRepository.selectMonthApril();
+    }
+
+    @Override
+    public BigDecimal selectMonthMay() {
+        return oderRepository.selectMonthMay();
+    }
+
+    @Override
+    public BigDecimal selectMonthJune() {
+        return oderRepository.selectMonthJune();
+    }
+
+    @Override
+    public BigDecimal selectMonthJuly() {
+        return oderRepository.selectMonthJuly();
+    }
+
+    @Override
+    public BigDecimal selectMonthAugust() {
+        return oderRepository.selectMonthAugust();
+    }
+
+    @Override
+    public BigDecimal selectMonthSeptember() {
+        return oderRepository.selectMonthSeptember();
+    }
+
+    @Override
+    public BigDecimal selectMonthOctober() {
+        return oderRepository.selectMonthOctober();
+    }
+
+    @Override
+    public BigDecimal selectMonthNovember() {
+        return oderRepository.selectMonthNovember();
+    }
+
+    @Override
+    public BigDecimal selectMonthDecember() {
+        return oderRepository.selectMonthDecember();
+    }
+
+    @Override
+    public QLDonHangDTO findByPhone(Integer phone) {
+        List<Object[]> objectList = oderRepository.findByPhone(phone);
+        Object[] list = objectList.get(0);
+        Integer id = (Integer) list[0];
+        String hoVaTen = (String) list[1];
+        Integer sdt = (Integer) list[2];
+        BigDecimal totalMoney = (BigDecimal) list[3];
+        Integer status = (Integer) list[4];
+        QLDonHangDTO donHangDTO = new QLDonHangDTO(id, hoVaTen, sdt, totalMoney, status);
+        return donHangDTO;
     }
 }

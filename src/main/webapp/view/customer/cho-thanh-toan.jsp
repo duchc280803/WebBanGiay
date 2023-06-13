@@ -12,6 +12,22 @@
     <title>Title</title>
     <link rel="stylesheet" href="/css/product-css/product.css">
     <link rel="stylesheet" href="/css/bootstrap.css">
+    <style>
+        .card-body {
+            display: flex;
+            align-items: center;
+        }
+
+        .card-image {
+            order: 1;
+            margin-right: 10px;
+        }
+
+        .card-content {
+            order: 2;
+        }
+
+    </style>
 </head>
 <body>
 <jsp:include page="/view/header.jsp"></jsp:include>
@@ -26,7 +42,7 @@
             </div>
             <div class="card mt-4">
                 <li class="nav-item">
-                    <a id="link2" class="nav-link text-center" href="/customer/all-oder">Đơn Mua</a>
+                    <a id="link2" class="nav-link text-center" href="/customer/cho-thanh-toan">Đơn Mua</a>
                 </li>
             </div>
         </div>
@@ -34,9 +50,6 @@
             <div class="container mt-4">
                 <h2>Đơn hàng</h2>
                 <ul class="nav nav-pills">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/customer/all-oder">Tất cả</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="/customer/cho-thanh-toan">Chờ thanh toán</a>
                     </li>
@@ -62,8 +75,11 @@
                         Đơn hàng ${index.index + 1}
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">${list.name}</h5>
-                        <p class="card-text">${list.status == 1 ? 'Chờ Thanh Toán' : ''}</p>
+                        <img src="${list.image}" class="card-image" style="width: 10%;">
+                        <div class="card-content">
+                            <h5 class="card-title">${list.name}</h5>
+                            <p class="card-text">${list.status == 1 ? 'Chờ Thanh Toán' : ''}</p>
+                        </div>
                     </div>
                 </div>
                 </c:forEach>

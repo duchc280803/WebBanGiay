@@ -30,11 +30,6 @@ public class CustomerController {
     @Autowired
     private HttpSession session;
 
-    @GetMapping("all-oder")
-    public String allOder(){
-        return "customer/all-oder";
-    }
-
     @GetMapping("cho-thanh-toan")
     public String choThanhToan(Model model){
         User user = (User) session.getAttribute("loggedInUser");

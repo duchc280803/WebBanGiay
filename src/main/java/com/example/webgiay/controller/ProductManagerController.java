@@ -1,5 +1,6 @@
 package com.example.webgiay.controller;
 
+import com.example.webgiay.dto.ProductDTO;
 import com.example.webgiay.dto.ProductManagerDTO;
 import com.example.webgiay.dto.ProductViewDTO;
 import com.example.webgiay.entity.*;
@@ -39,6 +40,9 @@ public class ProductManagerController {
     @Autowired
     private HttpSession session;
 
+    @Autowired
+    private ProductServiceImpl productServiceImpl;
+
     @GetMapping("hien-thi-product")
     public String hienThi(@RequestParam(value = "pageNumber", defaultValue = "0") Integer pageNumber,
                           @RequestParam(value = "pageSize", defaultValue = "9") Integer pageSize,
@@ -49,9 +53,7 @@ public class ProductManagerController {
         Page<ProductViewDTO> results = productManagerService.selectAllProduct(pageNumber, pageSize);
         List<ProductViewDTO> productDetailDTOList = results.getContent();
         Integer soLuong = productManagerService.countProduct();
-        List<Category> categoryList = categoryService.getAll();
         model.addAttribute("productDetailDTOList", productDetailDTOList);
-        model.addAttribute("categoryList", categoryList);
         model.addAttribute("results", results);
         model.addAttribute("soLuong", soLuong);
         return "admin/product-management";
@@ -136,6 +138,21 @@ public class ProductManagerController {
             ex.printStackTrace();
         }
         return "redirect:/product-manager/hien-thi-product";
+    }
+
+    @GetMapping("category/{id}")
+    public String findByCategory(@PathVariable("id") Integer id,
+                                 @RequestParam(value = "pageNumber", defaultValue = "0") Integer pageNumber,
+                                 @RequestParam(value = "pageSize", defaultValue = "9") Integer pageSize,
+                                 Model model) {
+        if (pageNumber < 0) {
+            pageNumber = 0;
+        }
+        Page<ProductViewDTO> results = productManagerService.selectAllProductCategory(id, pageNumber, pageSize);
+        List<ProductViewDTO> productList = results.getContent();
+        model.addAttribute("productList", productList);
+        model.addAttribute("results", results);
+        return "/product/product";
     }
 
     @ModelAttribute("categoryIds")

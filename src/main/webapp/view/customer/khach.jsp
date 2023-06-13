@@ -26,7 +26,7 @@
             </div>
             <div class="card mt-4">
                 <li class="nav-item">
-                    <a id="link2" class="nav-link text-center" href="/customer/all-oder">Đơn Mua</a>
+                    <a id="link2" class="nav-link text-center" href="/customer/cho-thanh-toan">Đơn Mua</a>
                 </li>
             </div>
         </div>

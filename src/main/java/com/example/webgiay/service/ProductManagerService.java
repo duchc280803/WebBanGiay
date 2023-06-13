@@ -1,5 +1,6 @@
 package com.example.webgiay.service;
 
+import com.example.webgiay.dto.ProductDTO;
 import com.example.webgiay.dto.ProductManagerDTO;
 import com.example.webgiay.dto.ProductViewDTO;
 import com.example.webgiay.entity.Image;
@@ -25,4 +26,5 @@ public interface ProductManagerService {
 
     boolean delete(Integer id);
 
+    Page<ProductViewDTO> selectAllProductCategory(Integer id, Integer pageNo, Integer pageSize);
 }

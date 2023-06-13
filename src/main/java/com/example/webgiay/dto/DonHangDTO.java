@@ -11,6 +11,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class DonHangDTO {
 
+    private String image;
+
     private String name;
 
     private Integer status;

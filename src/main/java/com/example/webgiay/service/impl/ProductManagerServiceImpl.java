@@ -1,5 +1,6 @@
 package com.example.webgiay.service.impl;
 
+import com.example.webgiay.dto.ProductDTO;
 import com.example.webgiay.dto.ProductManagerDTO;
 import com.example.webgiay.dto.ProductViewDTO;
 import com.example.webgiay.entity.*;
@@ -196,5 +197,32 @@ public class ProductManagerServiceImpl implements ProductManagerService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public Page<ProductViewDTO> selectAllProductCategory(Integer id, Integer pageNo, Integer pageSize) {
+        if (pageNo == null || pageNo < 0) {
+            pageNo = 0;
+        }
+        if (pageSize == null || pageSize <= 0) {
+            pageSize = 9;
+        }
+        Pageable pageable = PageRequest.of(pageNo, pageSize);
+        Page<Object[]> pageObject = productDetailRepository.selectAllProductCategory(id,pageable);
+        List<Object[]> listObject = pageObject.getContent();
+        List<ProductViewDTO> productDTOList = listObject.stream()
+                .map(objects -> new ProductViewDTO(
+                        (Integer) objects[0],
+                        (String) objects[1],
+                        (String) objects[2],
+                        (Integer) objects[3],
+                        (String) objects[4],
+                        (String) objects[5],
+                        (Integer) objects[6],
+                        (BigDecimal) objects[7],
+                        (String) objects[8],
+                        (String) objects[9]))
+                .collect(Collectors.toList());
+        return new PageImpl<>(productDTOList, pageable, pageObject.getTotalElements());
     }
 }
