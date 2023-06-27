@@ -68,8 +68,48 @@ a.btn.btn-lg.btn-primary.text-uppercase {
     font-weight: 700;
     font-size: 16px;
 }
-a.btn.btn-lg.btn-outline-primary.text-uppercase {
+button.btn.btn-lg.btn-outline-primary.text-uppercase {
     font-family: 'Noto Sans';
     font-weight: 700;
     font-size: 16px;
+    margin-left: 25px;
+}
+.mXmGu\+ {
+    display: flex;
+    padding-top: 25px;
+}
+._8BP9GU {
+    width: 50px;
+    height: 32px;
+    border-left: 0;
+    border-right: 0;
+    font-size: 16px;
+    font-weight: 400;
+    box-sizing: border-box;
+    text-align: center;
+    cursor: text;
+    border-radius: 0;
+    -webkit-appearance: none;
+}
+.mJX7hG {
+    outline: none;
+    cursor: pointer;
+    border: 0;
+    font-size: .875rem;
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color .1s cubic-bezier(.4, 0, .6, 1);
+    border: 1px solid rgba(0, 0, 0, .09);
+    border-radius: 2px;
+    background: transparent;
+    color: rgba(0, 0, 0, .8);
+    width: 32px;
+    height: 32px;
+}
+p {
+    font-size: 12px;
 }

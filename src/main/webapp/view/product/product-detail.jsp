@@ -73,25 +73,37 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-5">
+                    <div class="col-sm-8">
                         <dl class="param param-inline">
                             <dt>Quantity:</dt>
-                            <dd>
-                                <select class="form-control form-control-sm" style="width:70px;">
-                                    <option> 1</option>
-                                    <option> 2</option>
-                                    <option> 3</option>
-                                </select>
-                            </dd>
-                        </dl>  <!-- item-property .// -->
-                    </div> <!-- col.// -->
-                    <div class="col-sm-7">
+                            <p>${productDetailDTO.quantity} Sản Phẩm Có Sẵn</p>
+                            <div class="mXmGu+ shopee-input-quantity">
+                                <button type="submit" class="mJX7hG"
+                                        onclick="decreaseValue()">
+                                    -
+                                </button>
+                                <input id="quantityInput" class="mJX7hG _8BP9GU" type="text" value="1"
+                                       name="idProduct"/>
+                                <button type="submit" class="mJX7hG"
+                                        onclick="increaseValue()">
+                                    +
+                                </button>
+                                <form action="/cart/create" method="post">
+                                    <input id="formInput" class="form-control" type="hidden" value="1" name="quantity"/>
+                                    <input class="form-control" type="hidden" value="${productDetailDTO.id}" name="idProduct"/>
+                                    <button type="submit" class="btn btn-lg btn-outline-primary text-uppercase"><i
+                                            class="fas fa-shopping-cart"></i> Add to cart
+                                    </button>
+                                </form>
+                            </div>
+                        </dl>
+                    </div>
+                    <div class="col-sm-4">
                     </div>
                 </div>
                 <hr>
                 <a href="#" class="btn btn-lg btn-primary text-uppercase"> Buy now </a>
-                <a href="#" class="btn btn-lg btn-outline-primary text-uppercase"> <i
-                        class="fas fa-shopping-cart"></i> Add to cart </a>
+
             </article>
         </aside>
     </div>
@@ -115,6 +127,27 @@
             }
         });
     });
+    var originalQuantity = ${productDetailDTO.quantity};
+
+    function decreaseValue() {
+        var input = document.getElementById("quantityInput");
+        var value = parseInt(input.value);
+        if (value > 1) {
+            input.value = value - 1;
+            document.getElementById('formInput').value = value - 1;
+        }
+    }
+
+    function increaseValue() {
+        var input = document.getElementById("quantityInput");
+        var value = parseInt(input.value);
+        if (value < originalQuantity) {
+            input.value = value + 1;
+            document.getElementById('formInput').value = value + 1;
+        } else {
+            alert("Không thể tăng thêm số lượng sản phẩm.");
+        }
+    }
 </script>
 </body>
 </html>

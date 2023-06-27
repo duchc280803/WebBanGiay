@@ -39,15 +39,11 @@
         <div class="row">
             <c:forEach var="item" items="${list}">
                 <div class="col-md-4">
-                    <div class="card">
+                    <div class="card khung">
                         <img class="card-img-top" src="${item.image}" alt="Card image cap"/>
                         <div class="card-body">
                             <a href="/product/product-detail/${item.name}" class="card-title">${item.name}</a>
                             <p class="card-text"><strong>Giá:</strong> <fmt:formatNumber value="${item.price}" pattern="###,###"/>đ</p>
-                            <form action="/cart/create" method="post">
-                                <input type="hidden" name="idProduct" value="${item.id}"/>
-                                <button type="submit" class="btn btn-primary">Add to cart</button>
-                            </form>
                         </div>
                     </div>
                 </div>

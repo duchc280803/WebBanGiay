@@ -57,14 +57,6 @@
                                         </h4></a
                                         >
                                         <p class="card-text"><strong>Giá:</strong> <fmt:formatNumber value="${product.price}" pattern="###,###"/>đ</p>
-                                        <button
-                                                type="button"
-                                                class="btn btn-primary"
-                                                data-toggle="modal"
-                                                data-target="#product1Modal"
-                                        >
-                                            Add to cart
-                                        </button>
                                     </div>
                                 </div>
                             </div>

@@ -3,6 +3,8 @@ package com.example.webgiay.service.impl;
 import com.example.webgiay.dto.ProductDTO;
 import com.example.webgiay.dto.ProductDetailDTO;
 import com.example.webgiay.entity.Product;
+import com.example.webgiay.entity.ProductDetail;
+import com.example.webgiay.repository.ProductDetailRepository;
 import com.example.webgiay.repository.ProductRepository;
 import com.example.webgiay.service.ProductService;
 import org.modelmapper.ModelMapper;
@@ -23,6 +25,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private ProductDetailRepository productDetailRepository;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -54,7 +59,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Page<ProductDTO> getAllProduct(Integer pageNo, Integer pageSize) {
         if (pageNo == null || pageNo < 0) {
-            pageNo = 0;
+            pageNo = 1;
         }
         if (pageSize == null || pageSize <= 0) {
             pageSize = 9;
@@ -128,13 +133,15 @@ public class ProductServiceImpl implements ProductService {
     public ProductDetailDTO getOneDetailProduct(String name) {
         List<Object[]> result = productRepository.getOneDetailProduct(name);
         Object[] row = result.get(0);
-        String ten = (String) row[0];
-        BigDecimal price = (BigDecimal) row[1];
-        String description = (String) row[2];
-        String color = (String) row[3];
-        Integer size = (Integer) row[4];
-        String image = (String) row[5];
-        ProductDetailDTO productDetailDTO = new ProductDetailDTO(ten, price, description, color, size, image);
+        Integer id = (Integer) row[0];
+        String ten = (String) row[1];
+        BigDecimal price = (BigDecimal) row[2];
+        String description = (String) row[3];
+        String color = (String) row[4];
+        Integer size = (Integer) row[5];
+        String image = (String) row[6];
+        Integer quantity = (Integer) row[7];
+        ProductDetailDTO productDetailDTO = new ProductDetailDTO(id,ten, price, description, color, size, image,quantity);
         return productDetailDTO;
     }
 

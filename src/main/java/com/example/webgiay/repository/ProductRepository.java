@@ -46,13 +46,13 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
             "GROUP BY pd.id,p.name, pd.price")
     List<Object[]> getAllProduct(@Param("id") Integer id);
 
-    @Query("SELECT p.name, pd.price, p.description, cl.name, s.size, MIN(i.image) " +
+    @Query("SELECT p.id,p.name, pd.price, p.description, cl.name, s.size, MIN(i.image),pd.quantity " +
             "FROM Product p " +
             " JOIN p.listProduct pd " +
             " JOIN p.listImage i " +
             " JOIN pd.color cl " +
             " JOIN pd.size s " +
-            "WHERE p.name = :name GROUP BY p.name,pd.price,p.description, cl.name, s.size")
+            "WHERE p.name = :name GROUP BY p.id,p.name,pd.price,p.description, cl.name, s.size,pd.quantity ")
     List<Object[]> getOneDetailProduct(@Param("name") String name);
 
     @Query("SELECT p.name, MIN(i.image), pd.price " +

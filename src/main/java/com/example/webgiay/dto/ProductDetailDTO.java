@@ -13,6 +13,8 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 public class ProductDetailDTO {
 
+    private Integer id;
+
     private String name;
 
     private BigDecimal price;
@@ -25,4 +27,5 @@ public class ProductDetailDTO {
 
     private String image;
 
+    private Integer quantity;
 }

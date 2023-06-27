@@ -45,6 +45,7 @@
                                                id="input-telephone" class="form-control"/>
                                     </div>
                                 </div>
+                                <br>
                                 <div class="checkout-section payment-address">
                                     <div class="title section-title">Địa chỉ giao hàng</div>
                                     <div class="section-body">
@@ -198,7 +199,7 @@
                                     <div class="pull-right" style="text-align: center;">
                                         <button type="submit" data-loading-text="<span>MUA HÀNG</span>"
                                                 id="quick-checkout-button-confirm" class="btn btn-primary">
-                                            <span>MUA HÀNG</span></button>
+                                            <span>Đặt Hàng</span></button>
                                     </div>
                                 </div>
                             </div>

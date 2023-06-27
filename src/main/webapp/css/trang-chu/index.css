@@ -1,9 +1,9 @@
-.card{
+.card.khung {
     width: 400px;
-    height: 430px;
+    height: 500px;
 }
 .banner img {
-    max-width: 80%;
+    max-width: 100%;
     height: auto;
 }
 .bg-light{

@@ -68,7 +68,7 @@ public interface OderRepository extends JpaRepository<Oder,Integer> {
     @Query("SELECT count(o.id) FROM Oder o WHERE o.status = 4 AND MONTH(o.ngayDatHang) = :month")
     Integer countOderMonth(@Param("month") Integer month);
 
-    @Query("SELECT (od.totalMoney * od.quantity) FROM Oder o " +
+    @Query("SELECT SUM(od.totalMoney * od.quantity) FROM Oder o " +
             "JOIN o.listOderDetail od" +
             " WHERE o.status = 4 AND MONTH(o.ngayDatHang) = :month")
     BigDecimal totalMoney(@Param("month") Integer month);
@@ -111,7 +111,7 @@ public interface OderRepository extends JpaRepository<Oder,Integer> {
             " WHERE o.status = 4 AND MONTH(o.ngayDatHang) = 5")
     BigDecimal selectMonthMay();
 
-    @Query("SELECT (od.totalMoney * od.quantity) FROM Oder o " +
+    @Query("SELECT SUM(od.totalMoney * od.quantity) FROM Oder o " +
             "JOIN o.listOderDetail od" +
             " WHERE o.status = 4 AND MONTH(o.ngayDatHang) = 6")
     BigDecimal selectMonthJune();
